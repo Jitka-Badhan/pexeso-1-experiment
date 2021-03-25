@@ -1,0 +1,40 @@
+h1 {
+  text-align: center;
+}
+
+.square {
+  flex-basis: 150px;
+  height: 150px;
+  max-width: 20vw;
+  margin: 10px;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.purple {
+  background-color: purple;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px 20%;
+}
