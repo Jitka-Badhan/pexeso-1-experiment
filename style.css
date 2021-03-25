@@ -38,3 +38,14 @@ h1 {
   flex-wrap: wrap;
   margin: 50px 20%;
 }
+
+.points {
+  border: solid 1px black;
+  padding: 15px;
+  width: 100px;
+}
+
+.points-container {
+  display: flex;
+  justify-content: center;
+}
