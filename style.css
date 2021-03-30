@@ -33,6 +33,10 @@ h1 {
   background-color: orange;
 }
 
+.found {
+  background-color: transparent !important;
+}
+
 .container {
   display: flex;
   flex-wrap: wrap;
