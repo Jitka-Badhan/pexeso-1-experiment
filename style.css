@@ -33,8 +33,12 @@ h1 {
   background-color: orange;
 }
 
+.cover {
+  background-color: grey;
+}
+
 .found {
-  background-color: transparent !important;
+  background-color: transparent;
 }
 
 .container {
