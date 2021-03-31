@@ -19,50 +19,97 @@ let compare = [];
 let points = 0;
 
 // Main functions of the programme
-const refreshPoints = () => {
-  const pointsDiv = document.getElementById('points');
+
+function count() {
+  let sec = 0;
+  let min = 0;
+
+  const timeRefresh = () => {
+    document.querySelector('.stopwatch').textContent = `${String(min).padStart(
+      2,
+      0,
+    )}:${String(sec).padStart(2, 0)}`;
+  };
+
+  const endCount = () => {
+    clearInterval(countSec);
+    clearInterval(countMin);
+  };
+
+  const countSec = setInterval(function () {
+    sec < 59 ? sec++ : (sec = 0);
+    timeRefresh();
+    if (points === 5) {
+      console.log('Konec!');
+      endCount();
+    }
+  }, 1000);
+
+  const countMin = setInterval(function () {
+    min < 59 ? min++ : (min = 0);
+    timeRefresh();
+  }, 60000);
+}
+
+function refreshPoints() {
+  const pointsDiv = document.querySelector('.points');
   pointsDiv.textContent = `Body: ${points}`;
-};
+}
 
 function comparison() {
   if (compare[0].classList.value !== compare[1].classList.value) {
     // If 2 pics are different, cover them
-    setTimeout( function() {
+    setTimeout(function () {
       compare[0].classList.add('cover');
       compare[1].classList.add('cover');
-      compare.splice(0, 2); 
+      compare.splice(0, 2);
     }, 1000);
   } else {
     // If 2 pics are same, let them disappear and add a point
     points++;
     refreshPoints();
-    setTimeout( function() {
+    setTimeout(function () {
       compare[0].classList.add('found');
       compare[1].classList.add('found');
-      compare.splice(0, 2); 
+      compare.splice(0, 2);
     }, 1000);
   }
 }
 
-function init () {
+function init() {
   pictures.forEach(function (item) {
-    // Shuffle the pictures
+    item.classList.remove('found');
     item.style.order = Math.ceil(Math.random() * 10);
-    // 'Cover' the pictures
     item.classList.add('cover');
-    // 'Uncover'them after click and compare when there are 2 pics uncovered
+  });
+  points = 0;
+  refreshPoints();
+}
+
+function play() {
+  pictures.forEach(function (item) {
     item.addEventListener('click', function () {
       item.classList.remove('cover');
       compare.push(item);
       if (compare.length === 2) {
-        (compare[0].id !== compare[1].id) ? comparison() : compare.pop();
-      };
+        compare[0].id !== compare[1].id ? comparison() : compare.pop();
+      }
     });
-  })
-  refreshPoints()
+  });
+  count();
 }
 
-// Run the programme 
+// Run the programme
 init();
 
-
+// Start counting
+const playDiv = document.querySelector('.play');
+playDiv.addEventListener('click', function () {
+  if (playDiv.textContent === 'Hrát') {
+    play();
+    playDiv.textContent = 'Znovu';
+  } else {
+    init();
+    play();
+  }
+});
