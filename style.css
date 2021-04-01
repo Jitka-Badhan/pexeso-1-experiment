@@ -4,12 +4,57 @@ body {
   font-family: 'Lexend', sans-serif;
 }
 
-h1 {
-  background-color: #616161;
-  margin: 0;
-  font-family: 'Indie Flower', cursive;
-  color: #f5f5f5;
+.header {
   text-align: center;
+  background-color: #616161;
+  height: 54px;
+  position: relative;
+}
+
+h1 {
+  font-family: 'Indie Flower', cursive;
+  font-size: 26px;
+  color: #f5f5f5;
+  margin: 0;
+  padding: 8px;
+}
+
+.players_menu,
+.difficulty_menu {
+  display: none;
+  position: absolute;
+}
+
+.players_menu {
+  top: 0;
+  left: 0;
+}
+
+.difficulty_menu {
+  top: 0;
+  right: 0;
+}
+
+.players_menu_item,
+.difficulty_menu_item {
+  display: none;
+  line-height: 2;
+  padding: 5px;
+}
+
+.header img {
+  width: 30px;
+  padding: 10px 30px 10px 30px;
+}
+
+.players_menu:hover,
+.difficulty_menu:hover {
+  background-color: #ffc107;
+}
+
+.players_menu_item:hover,
+.difficulty_menu_item:hover {
+  background-color: #4caf50;
 }
 
 .functions-bar {
@@ -139,4 +184,26 @@ h1 {
 
 .found {
   background-color: transparent;
+}
+
+@media screen and (min-width: 360px) {
+  /* body {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+  } */
+
+  .players_menu,
+  .difficulty_menu {
+    display: block;
+  }
+
+  .header {
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+
+  .container {
+    max-width: 270px;
+  }
 }

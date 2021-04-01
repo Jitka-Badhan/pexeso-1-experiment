@@ -14,6 +14,12 @@ const pictures = [
   document.getElementById('pic10'),
   document.getElementById('pic11'),
   document.getElementById('pic12'),
+  document.getElementById('pic13'),
+  document.getElementById('pic14'),
+  document.getElementById('pic15'),
+  document.getElementById('pic16'),
+  document.getElementById('pic17'),
+  document.getElementById('pic18'),
 ];
 let compare = [];
 let points = 0;
