@@ -17,9 +17,15 @@ const pictures = [
 ];
 let compare = [];
 let points = 0;
+let endPoints = 5;
+let theEnd = () => {
+  if (points === endPoints) {
+    return true;
+  }
+};
 
-// Main functions of the programme
-
+// Main functions of the programme:
+// Function for counting the time (stopwatch)
 function count() {
   let sec = 0;
   let min = 0;
@@ -31,17 +37,12 @@ function count() {
     )}:${String(sec).padStart(2, 0)}`;
   };
 
-  const endCount = () => {
-    clearInterval(countSec);
-    clearInterval(countMin);
-  };
-
   const countSec = setInterval(function () {
     sec < 59 ? sec++ : (sec = 0);
     timeRefresh();
-    if (points === 5) {
-      console.log('Konec!');
-      endCount();
+    if (theEnd()) {
+      clearInterval(countSec);
+      clearInterval(countMin);
     }
   }, 1000);
 
@@ -51,21 +52,21 @@ function count() {
   }, 60000);
 }
 
+// Function for showing the points
 function refreshPoints() {
   const pointsDiv = document.querySelector('.points');
   pointsDiv.textContent = `Body: ${points}`;
 }
 
+// Function for comparing the two pictures
 function comparison() {
   if (compare[0].classList.value !== compare[1].classList.value) {
-    // If 2 pics are different, cover them
     setTimeout(function () {
       compare[0].classList.add('cover');
       compare[1].classList.add('cover');
       compare.splice(0, 2);
     }, 1000);
   } else {
-    // If 2 pics are same, let them disappear and add a point
     points++;
     refreshPoints();
     setTimeout(function () {
@@ -76,27 +77,15 @@ function comparison() {
   }
 }
 
+// Function init for reseting the game
 function init() {
   pictures.forEach(function (item) {
     item.classList.remove('found');
-    item.style.order = Math.ceil(Math.random() * 10);
     item.classList.add('cover');
+    item.style.order = Math.ceil(Math.random() * 10);
   });
   points = 0;
   refreshPoints();
-}
-
-function play() {
-  pictures.forEach(function (item) {
-    item.addEventListener('click', function () {
-      item.classList.remove('cover');
-      compare.push(item);
-      if (compare.length === 2) {
-        compare[0].id !== compare[1].id ? comparison() : compare.pop();
-      }
-    });
-  });
-  count();
 }
 
 // Run the programme
@@ -106,10 +95,19 @@ init();
 const playDiv = document.querySelector('.play');
 playDiv.addEventListener('click', function () {
   if (playDiv.textContent === 'Hrát') {
-    play();
+    pictures.forEach(function (item) {
+      item.addEventListener('click', function () {
+        item.classList.remove('cover');
+        compare.push(item);
+        if (compare.length === 2) {
+          compare[0].id !== compare[1].id ? comparison() : compare.pop();
+        }
+      });
+    });
+    count();
     playDiv.textContent = 'Znovu';
   } else {
     init();
-    play();
+    count();
   }
 });
