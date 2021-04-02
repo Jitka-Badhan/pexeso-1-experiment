@@ -16,25 +16,36 @@
     <!--Tady bude hlavička-->
     <section class="header">
       <nav class="players_menu">
-        <img src="img/players_wh.png" alt="Počet hráčů" title="Počet hráčů" />
-        <div class="players_menu_item">1 hráč</div>
-        <div class="players_menu_item">2 hráči</div>
+        <img
+          class="players_menu_icon"
+          src="img/players_wh.png"
+          alt="Počet hráčů"
+          title="Počet hráčů"
+        />
+        <div class="players_menu_hidden">
+          <div class="players_menu_item">1 hráč</div>
+          <div class="players_menu_item">2 hráči</div>
+        </div>
       </nav>
       <h1>Pexeso</h1>
       <nav class="difficulty_menu">
         <img
+          class="difficulty_menu_icon"
           src="img/difficulty_wh.png"
           alt="Počet kartiček"
           title="Počet kartiček"
         />
-        <div class="difficulty_menu_item">12</div>
-        <div class="difficulty_menu_item">18</div>
-        <div class="difficulty_menu_item">24</div>
-        <div class="difficulty_menu_item">36</div>
+        <div class="difficulty_menu_hidden">
+          <div class="difficulty_menu_item level12">12</div>
+          <div class="difficulty_menu_item level18">18</div>
+          <div class="difficulty_menu_item level24">24</div>
+          <div class="difficulty_menu_item level36">36</div>
+        </div>
       </nav>
     </section>
 
     <!--Proužek s tlačítky-->
+
     <section class="functions-bar">
       <div class="stopwatch">00:00</div>
       <div class="points"></div>
@@ -42,44 +53,46 @@
     </section>
 
     <!--Zde začíná pole obrázků-->
-    <div class="container">
-      <div id="pic1" class="red square play"></div>
-      <div id="pic2" class="red square play"></div>
-      <div id="pic3" class="blue square play"></div>
-      <div id="pic4" class="blue square play"></div>
-      <div id="pic5" class="green square play"></div>
-      <div id="pic6" class="green square play"></div>
-      <div id="pic7" class="yellow square play"></div>
-      <div id="pic8" class="yellow square play"></div>
-      <div id="pic9" class="purple square play"></div>
-      <div id="pic10" class="purple square play"></div>
-      <!-- End of basic version for small phones -->
-      <div id="pic11" class="orange square play"></div>
-      <div id="pic12" class="orange square play"></div>
-      <div id="pic13" class="cyan square"></div>
-      <div id="pic14" class="cyan square"></div>
-      <div id="pic15" class="pink square"></div>
-      <div id="pic16" class="pink square"></div>
-      <div id="pic17" class="lime square"></div>
-      <div id="pic18" class="lime square"></div>
-      <div id="pic19" class="amber square"></div>
-      <div id="pic20" class="amber square"></div>
-      <div id="pic21" class="brown square"></div>
-      <div id="pic22" class="brown square"></div>
-      <div id="pic23" class="indigo square"></div>
-      <div id="pic24" class="indigo square"></div>
-      <div id="pic25" class="teal square"></div>
-      <div id="pic26" class="teal square"></div>
-      <div id="pic27" class="deep-orange square"></div>
-      <div id="pic28" class="deep-orange square"></div>
-      <div id="pic29" class="light-green square"></div>
-      <div id="pic30" class="light-green square"></div>
-      <div id="pic31" class="deep-purple square"></div>
-      <div id="pic32" class="deep-purple square"></div>
-      <div id="pic33" class="blue-grey square"></div>
-      <div id="pic34" class="blue-grey square"></div>
-      <div id="pic35" class="light-blue square"></div>
-      <div id="pic36" class="light-blue square"></div>
+    <div class="centered">
+      <div class="container">
+        <div id="pic1" class="red square show"></div>
+        <div id="pic2" class="red square show"></div>
+        <div id="pic3" class="blue square show"></div>
+        <div id="pic4" class="blue square show"></div>
+        <div id="pic5" class="green square show"></div>
+        <div id="pic6" class="green square show"></div>
+        <div id="pic7" class="yellow square show"></div>
+        <div id="pic8" class="yellow square show"></div>
+        <div id="pic9" class="purple square show"></div>
+        <div id="pic10" class="purple square show"></div>
+        <!-- End of basic version for small phones -->
+        <div id="pic11" class="orange square"></div>
+        <div id="pic12" class="orange square"></div>
+        <div id="pic13" class="cyan square"></div>
+        <div id="pic14" class="cyan square"></div>
+        <div id="pic15" class="pink square"></div>
+        <div id="pic16" class="pink square"></div>
+        <div id="pic17" class="lime square"></div>
+        <div id="pic18" class="lime square"></div>
+        <div id="pic19" class="amber square"></div>
+        <div id="pic20" class="amber square"></div>
+        <div id="pic21" class="brown square"></div>
+        <div id="pic22" class="brown square"></div>
+        <div id="pic23" class="indigo square"></div>
+        <div id="pic24" class="indigo square"></div>
+        <div id="pic25" class="teal square"></div>
+        <div id="pic26" class="teal square"></div>
+        <div id="pic27" class="deep-orange square"></div>
+        <div id="pic28" class="deep-orange square"></div>
+        <div id="pic29" class="light-green square"></div>
+        <div id="pic30" class="light-green square"></div>
+        <div id="pic31" class="deep-purple square"></div>
+        <div id="pic32" class="deep-purple square"></div>
+        <div id="pic33" class="blue-grey square"></div>
+        <div id="pic34" class="blue-grey square"></div>
+        <div id="pic35" class="light-blue square"></div>
+        <div id="pic36" class="light-blue square"></div>
+      </div>
     </div>
 
     <!--Zde je vložen script-->

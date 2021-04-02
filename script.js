@@ -20,12 +20,35 @@ const pictures = [
   document.getElementById('pic16'),
   document.getElementById('pic17'),
   document.getElementById('pic18'),
+  document.getElementById('pic19'),
+  document.getElementById('pic20'),
+  document.getElementById('pic21'),
+  document.getElementById('pic22'),
+  document.getElementById('pic23'),
+  document.getElementById('pic24'),
+  document.getElementById('pic25'),
+  document.getElementById('pic26'),
+  document.getElementById('pic27'),
+  document.getElementById('pic28'),
+  document.getElementById('pic29'),
+  document.getElementById('pic30'),
+  document.getElementById('pic31'),
+  document.getElementById('pic32'),
+  document.getElementById('pic33'),
+  document.getElementById('pic34'),
+  document.getElementById('pic35'),
+  document.getElementById('pic36'),
 ];
 let compare = [];
 let points = 0;
 let endPoints = 5;
+let stopCount = false;
 let theEnd = () => {
   if (points === endPoints) {
+    playDiv.textContent = 'Znovu';
+    return true;
+  } else if (stopCount) {
+    playDiv.textContent = 'Znovu';
     return true;
   }
 };
@@ -49,6 +72,7 @@ function count() {
     if (theEnd()) {
       clearInterval(countSec);
       clearInterval(countMin);
+      stopCount = false;
     }
   }, 1000);
 
@@ -56,6 +80,14 @@ function count() {
     min < 59 ? min++ : (min = 0);
     timeRefresh();
   }, 60000);
+
+  const countEnd = setInterval(function () {
+    if (theEnd()) {
+      clearInterval(countSec);
+      clearInterval(countMin);
+      stopCount = false;
+    }
+  }, 10);
 }
 
 // Function for showing the points
@@ -111,9 +143,127 @@ playDiv.addEventListener('click', function () {
       });
     });
     count();
-    playDiv.textContent = 'Znovu';
+    playDiv.textContent = 'Stop';
+  } else if (playDiv.textContent === 'Stop') {
+    stopCount = true;
   } else {
     init();
     count();
+    playDiv.textContent = 'Stop';
   }
+});
+
+const mediaQuery = window.matchMedia('(min-width: 360px');
+if (mediaQuery.matches) {
+  document.querySelector('#pic11').style.display = 'block';
+  document.querySelector('#pic12').style.display = 'block';
+}
+
+// Set the amount of cards
+const difficultyLevel = document.querySelector('.difficulty_menu_icon');
+difficultyLevel.addEventListener('click', function () {
+  document.querySelector('.difficulty_menu_hidden').classList.toggle('show');
+});
+const cards_amount12 = document.querySelector('.level12');
+const cards_amount18 = document.querySelector('.level18');
+const cards_amount24 = document.querySelector('.level24');
+const cards_amount36 = document.querySelector('.level36');
+
+cards_amount12.addEventListener('click', function () {
+  stopCount = true;
+  pictures.forEach(function (item, index) {
+    item.classList.add('show');
+    if (index >= 12) {
+      item.classList.remove('show');
+    }
+
+    const mediaQuery = window.matchMedia('(min-width: 720px');
+    if (mediaQuery.matches) {
+      const container = document.querySelector('.container');
+      container.style.maxWidth = '360px';
+      container.style.minWidth = '360px';
+      container.style.margin = '0';
+    }
+
+    document.querySelector('.difficulty_menu_hidden').classList.remove('show');
+    endPoints = 6;
+    theEnd();
+    document.querySelector('.stopwatch').textContent = '00:00';
+    init();
+  });
+});
+
+cards_amount18.addEventListener('click', function () {
+  stopCount = true;
+  pictures.forEach(function (item, index) {
+    item.classList.add('show');
+    if (index >= 18) {
+      item.classList.remove('show');
+    }
+
+    const mediaQuery = window.matchMedia('(min-width: 720px');
+    if (mediaQuery.matches) {
+      const container = document.querySelector('.container');
+      container.style.maxWidth = '540px';
+      container.style.minWidth = '540px';
+      container.style.margin = '0';
+    }
+
+    document.querySelector('.difficulty_menu_hidden').classList.remove('show');
+    endPoints = 9;
+    theEnd();
+    document.querySelector('.stopwatch').textContent = '00:00';
+    init();
+  });
+});
+
+cards_amount24.addEventListener('click', function () {
+  stopCount = true;
+  pictures.forEach(function (item, index) {
+    item.classList.add('show');
+    if (index >= 24) {
+      item.classList.remove('show');
+    }
+
+    const mediaQuery = window.matchMedia('(min-width: 720px');
+    if (mediaQuery.matches) {
+      const container = document.querySelector('.container');
+      container.style.maxWidth = '720px';
+      container.style.minWidth = '720px';
+      container.style.margin = '0';
+    }
+
+    document.querySelector('.difficulty_menu_hidden').classList.remove('show');
+    endPoints = 12;
+    theEnd();
+    document.querySelector('.stopwatch').textContent = '00:00';
+    init();
+  });
+});
+
+cards_amount36.addEventListener('click', function () {
+  stopCount = true;
+  pictures.forEach(function (item) {
+    item.classList.add('show');
+
+    const mediaQuery = window.matchMedia('(min-width: 720px');
+    if (mediaQuery.matches) {
+      const container = document.querySelector('.container');
+      container.style.maxWidth = '820px';
+      container.style.minWidth = '820px';
+      container.style.margin = '0';
+    }
+
+    document.querySelector('.difficulty_menu_hidden').classList.remove('show');
+    endPoints = 18;
+    theEnd();
+    document.querySelector('.stopwatch').textContent = '00:00';
+    init();
+  });
+});
+
+// Set the number of players
+const players = document.querySelector('.players_menu_icon');
+players.addEventListener('click', function () {
+  document.querySelector('.players_menu_hidden').classList.toggle('show');
 });
