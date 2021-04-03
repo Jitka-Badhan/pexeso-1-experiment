@@ -81,6 +81,51 @@ h1 {
 
 .play {
   background-color: #e91e63;
+  position: relative;
+}
+
+.play p {
+  margin: 0;
+}
+
+.player1_icon,
+.player2_icon {
+  width: 30px;
+  height: 30px;
+  display: none;
+}
+
+.player1_icon {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.player2_icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.player1 {
+  background-color: #4caf50;
+}
+
+.player2 {
+  background-color: #2196f3;
+}
+
+.player1,
+.player2 {
+  display: none;
+}
+
+.player1Background {
+  background-color: #4caf4f83;
+}
+
+.player2Background {
+  background-color: #2195f39c;
 }
 
 .centered {
@@ -237,6 +282,11 @@ h1 {
   .level24,
   .level36 {
     display: block;
+  }
+
+  h1 {
+    font-size: 36px;
+    padding: 0;
   }
 
   .container {

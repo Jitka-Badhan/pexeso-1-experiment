@@ -23,8 +23,8 @@
           title="Počet hráčů"
         />
         <div class="players_menu_hidden">
-          <div class="players_menu_item">1 hráč</div>
-          <div class="players_menu_item">2 hráči</div>
+          <div class="players_menu_item singlePlayer">1 hráč</div>
+          <div class="players_menu_item multiplayer">2 hráči</div>
         </div>
       </nav>
       <h1>Pexeso</h1>
@@ -45,15 +45,28 @@
     </section>
 
     <!--Proužek s tlačítky-->
-
-    <section class="functions-bar">
-      <div class="stopwatch">00:00</div>
-      <div class="points"></div>
-      <div class="play">Hrát</div>
-    </section>
-
-    <!--Zde začíná pole obrázků-->
     <div class="centered">
+      <section class="functions-bar">
+        <div class="stopwatch">00:00</div>
+        <div class="points"></div>
+        <div class="player1">Hráč 1<br />Body: 0</div>
+        <div class="play">
+          <img
+            class="player1_icon"
+            src="img/player1.png"
+            alt="player_white_icon"
+          />
+          <p>Hrát</p>
+          <img
+            class="player2_icon"
+            src="img/player2.png"
+            alt="player_black_icon"
+          />
+        </div>
+        <div class="player2">Hráč 2<br />Body: 0</div>
+      </section>
+
+      <!--Zde začíná pole obrázků-->
       <div class="container">
         <div id="pic1" class="red square show"></div>
         <div id="pic2" class="red square show"></div>
