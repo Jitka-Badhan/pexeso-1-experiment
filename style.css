@@ -120,12 +120,20 @@ h1 {
   display: none;
 }
 
-.player1Background {
-  background-color: #4caf4f83;
+.multiplayer_bckgr {
+  background: linear-gradient(to right, #c8e6c9 45%, #bbdefb 65%);
 }
 
-.player2Background {
-  background-color: #2195f39c;
+.player1_bckgr {
+  background: none #c8e6c9;
+}
+
+.player2_bckgr {
+  background: none #bbdefb;
+}
+
+.singlePlayer_bckgr {
+  background: none #bdbdbd;
 }
 
 .centered {

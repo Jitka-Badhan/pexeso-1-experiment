@@ -68,15 +68,15 @@ const changePlayers = () => {
     playDiv.classList.add('player2_turn');
     player1_icon.classList.remove('show');
     player2_icon.classList.add('show');
-    body.style.backgroundColor = '#BBDEFB';
-    console.log('Hraje player2');
+    body.classList.remove('player1_bckgr');
+    body.classList.add('player2_bckgr');
   } else if (playDiv.classList.contains('player2_turn')) {
     playDiv.classList.remove('player2_turn');
     playDiv.classList.add('player1_turn');
     player2_icon.classList.remove('show');
     player1_icon.classList.add('show');
-    body.style.backgroundColor = '#C8E6C9';
-    console.log('Hraje player1');
+    body.classList.remove('player2_bckgr');
+    body.classList.add('player1_bckgr');
   }
 };
 
@@ -115,9 +115,11 @@ function comparison() {
       compare[1].classList.add('cover');
       compare.splice(0, 2);
     }, 1000);
-    setTimeout(function () {
-      changePlayers();
-    }, 1000);
+    if (playDiv.classList.contains('multiplayer')) {
+      setTimeout(function () {
+        changePlayers();
+      }, 1000);
+    }
   } else {
     points++;
     refreshPoints();
@@ -126,20 +128,22 @@ function comparison() {
       compare[1].classList.add('found');
       compare.splice(0, 2);
     }, 1000);
-    if (playDiv.classList.contains('player1_turn')) {
-      pointsPlayer1++;
-      setTimeout(function () {
-        document.querySelector(
-          '.player1',
-        ).innerHTML = `Hráč 1<br />Body: ${pointsPlayer1}`;
-      }, 1000);
-    } else if (playDiv.classList.contains('player2_turn')) {
-      pointsPlayer2++;
-      setTimeout(function () {
-        document.querySelector(
-          '.player2',
-        ).innerHTML = `Hráč 2<br />Body: ${pointsPlayer2}`;
-      }, 1000);
+    if (playDiv.classList.contains('multiplayer')) {
+      if (playDiv.classList.contains('player1_turn')) {
+        pointsPlayer1++;
+        setTimeout(function () {
+          document.querySelector(
+            '.player1',
+          ).innerHTML = `Hráč 1<br />Body: ${pointsPlayer1}`;
+        }, 1000);
+      } else if (playDiv.classList.contains('player2_turn')) {
+        pointsPlayer2++;
+        setTimeout(function () {
+          document.querySelector(
+            '.player2',
+          ).innerHTML = `Hráč 2<br />Body: ${pointsPlayer2}`;
+        }, 1000);
+      }
     }
   }
 }
@@ -259,25 +263,25 @@ cards_amount12.addEventListener('click', function () {
     if (index >= 12) {
       item.classList.remove('show');
     }
-
-    const mediaQuery = window.matchMedia('(min-width: 720px');
-    if (mediaQuery.matches) {
-      const container = document.querySelector('.container');
-      container.style.maxWidth = '360px';
-      container.style.minWidth = '360px';
-      container.style.margin = '0';
-    }
-
-    document.querySelector('.difficulty_menu_hidden').classList.remove('show');
-    endPoints = 6;
-    theEnd();
-    init();
-    stopButton = true;
-
-    if (playDiv.classList.contains('multiplayer')) {
-      initMultiplayer();
-    }
   });
+
+  const mediaQuery = window.matchMedia('(min-width: 720px');
+  if (mediaQuery.matches) {
+    const container = document.querySelector('.container');
+    container.style.maxWidth = '360px';
+    container.style.minWidth = '360px';
+    container.style.margin = '0';
+  }
+
+  document.querySelector('.difficulty_menu_hidden').classList.remove('show');
+  endPoints = 6;
+  theEnd();
+  init();
+  stopButton = true;
+
+  if (playDiv.classList.contains('multiplayer')) {
+    initMultiplayer();
+  }
 });
 
 cards_amount18.addEventListener('click', function () {
@@ -288,25 +292,25 @@ cards_amount18.addEventListener('click', function () {
     if (index >= 18) {
       item.classList.remove('show');
     }
-
-    const mediaQuery = window.matchMedia('(min-width: 720px');
-    if (mediaQuery.matches) {
-      const container = document.querySelector('.container');
-      container.style.maxWidth = '540px';
-      container.style.minWidth = '540px';
-      container.style.margin = '0';
-    }
-
-    document.querySelector('.difficulty_menu_hidden').classList.remove('show');
-    endPoints = 9;
-    theEnd();
-    init();
-    stopButton = true;
-
-    if (playDiv.classList.contains('multiplayer')) {
-      initMultiplayer();
-    }
   });
+
+  const mediaQuery = window.matchMedia('(min-width: 720px');
+  if (mediaQuery.matches) {
+    const container = document.querySelector('.container');
+    container.style.maxWidth = '540px';
+    container.style.minWidth = '540px';
+    container.style.margin = '0';
+  }
+
+  document.querySelector('.difficulty_menu_hidden').classList.remove('show');
+  endPoints = 9;
+  theEnd();
+  init();
+  stopButton = true;
+
+  if (playDiv.classList.contains('multiplayer')) {
+    initMultiplayer();
+  }
 });
 
 cards_amount24.addEventListener('click', function () {
@@ -317,25 +321,25 @@ cards_amount24.addEventListener('click', function () {
     if (index >= 24) {
       item.classList.remove('show');
     }
-
-    const mediaQuery = window.matchMedia('(min-width: 720px');
-    if (mediaQuery.matches) {
-      const container = document.querySelector('.container');
-      container.style.maxWidth = '720px';
-      container.style.minWidth = '720px';
-      container.style.margin = '0';
-    }
-
-    document.querySelector('.difficulty_menu_hidden').classList.remove('show');
-    endPoints = 12;
-    theEnd();
-    init();
-    stopButton = true;
-
-    if (playDiv.classList.contains('multiplayer')) {
-      initMultiplayer();
-    }
   });
+
+  const mediaQuery = window.matchMedia('(min-width: 720px');
+  if (mediaQuery.matches) {
+    const container = document.querySelector('.container');
+    container.style.maxWidth = '720px';
+    container.style.minWidth = '720px';
+    container.style.margin = '0';
+  }
+
+  document.querySelector('.difficulty_menu_hidden').classList.remove('show');
+  endPoints = 12;
+  theEnd();
+  init();
+  stopButton = true;
+
+  if (playDiv.classList.contains('multiplayer')) {
+    initMultiplayer();
+  }
 });
 
 cards_amount36.addEventListener('click', function () {
@@ -343,25 +347,25 @@ cards_amount36.addEventListener('click', function () {
 
   pictures.forEach(function (item) {
     item.classList.add('show');
-
-    const mediaQuery = window.matchMedia('(min-width: 720px');
-    if (mediaQuery.matches) {
-      const container = document.querySelector('.container');
-      container.style.maxWidth = '820px';
-      container.style.minWidth = '820px';
-      container.style.margin = '0';
-    }
-
-    document.querySelector('.difficulty_menu_hidden').classList.remove('show');
-    endPoints = 18;
-    theEnd();
-    init();
-    stopButton = true;
-
-    if (playDiv.classList.contains('multiplayer')) {
-      initMultiplayer();
-    }
   });
+
+  const mediaQuery = window.matchMedia('(min-width: 720px');
+  if (mediaQuery.matches) {
+    const container = document.querySelector('.container');
+    container.style.maxWidth = '820px';
+    container.style.minWidth = '820px';
+    container.style.margin = '0';
+  }
+
+  document.querySelector('.difficulty_menu_hidden').classList.remove('show');
+  endPoints = 18;
+  theEnd();
+  init();
+  stopButton = true;
+
+  if (playDiv.classList.contains('multiplayer')) {
+    initMultiplayer();
+  }
 });
 
 ///////////////////////////////////////////////////////////////////////////
@@ -380,13 +384,26 @@ const body = document.querySelector('body');
 const player1_icon = document.querySelector('.player1_icon');
 const player2_icon = document.querySelector('.player2_icon');
 
+// const multiplayerGame = () => {
+//   if (!playDiv.classList.contains('multiplayer_active')) {
+//     player2_icon.classList.remove('show');
+//     body.style.background = 'none #C8E6C9';
+//     playDiv.classList.add('multiplayer_active');
+//     playDiv.classList.add('player1_turn');
+//   }
+//   console.log('Tady jsem!');
+//   playDiv.removeEventListener('click', multiplayerGame);
+// };
+
 const initMultiplayer = () => {
   document.querySelector('.stopwatch').style.display = 'none';
   document.querySelector('.points').style.display = 'none';
   document.querySelector('.player1').style.display = 'block';
   document.querySelector('.player2').style.display = 'block';
   document.querySelector('.players_menu_hidden').classList.remove('show');
-  body.style.background = 'linear-gradient(to right, #C8E6C9 45%, #BBDEFB 65%)';
+  body.classList.remove('player1_bckgr');
+  body.classList.remove('player2_bckgr');
+  body.classList.add('multiplayer_bckgr');
   playDiv.style.backgroundColor = '#ffc107';
   player1_icon.classList.add('show');
   player2_icon.classList.add('show');
@@ -399,15 +416,17 @@ const initMultiplayer = () => {
     '.player2',
   ).innerHTML = `Hráč 1<br />Body: ${pointsPlayer2}`;
 
-  playDiv.classList.remove('multiplayer');
+  playDiv.classList.remove('multiplayer_active');
+  playDiv.classList.add('multiplayer');
 
   playDiv.addEventListener('click', function multiplayerGame() {
-    if (!playDiv.classList.contains('multiplayer')) {
+    if (!playDiv.classList.contains('multiplayer_active')) {
       player2_icon.classList.remove('show');
-      body.style.background = 'none #C8E6C9';
-      playDiv.classList.add('multiplayer');
+      body.classList.add('player1_bckgr');
+      playDiv.classList.add('multiplayer_active');
       playDiv.classList.add('player1_turn');
     }
+    console.log('Tady jsem!');
     playDiv.removeEventListener('click', multiplayerGame);
   });
 };
@@ -415,26 +434,36 @@ const initMultiplayer = () => {
 singlePlayer.addEventListener('click', function () {
   earlyEnd();
   init();
+  stopButton = true;
 
   document.querySelector('.stopwatch').style.display = 'block';
   document.querySelector('.points').style.display = 'block';
   document.querySelector('.player1').style.display = 'none';
   document.querySelector('.player2').style.display = 'none';
   document.querySelector('.players_menu_hidden').classList.remove('show');
-  body.style.background = '#bdbdbd';
+  // body.style.background = '#bdbdbd';
   playDiv.style.backgroundColor = '#e91e63';
   playDiv.classList.remove('multiplayer');
+  playDiv.classList.remove('multiplayer_active');
   playDiv.classList.remove('player1_turn');
   playDiv.classList.remove('player2_turn');
   player1_icon.classList.remove('show');
   player2_icon.classList.remove('show');
-  console.log(playDiv.classList);
+  body.classList.remove('player1_bckgr');
+  body.classList.remove('player2_bckgr');
+  body.classList.remove('player2_bckgr');
+  body.classList.remove('multiplayer_bckgr');
+  body.classList.add('singlePlayer_bckgr');
+  console.log(body);
 });
 
 multiplayer.addEventListener('click', function () {
+  body.classList.remove('singlePlayer_bckgr');
+
   earlyEnd();
   init();
   initMultiplayer();
+  stopButton = true;
 });
 
 // How multiplayer works?
