@@ -1,4 +1,5 @@
 body {
+  position: relative;
   background-color: #bdbdbd;
   height: 100vh;
   margin: 0;
@@ -235,8 +236,58 @@ h1 {
 }
 /* end of colors */
 
+.endResult {
+  position: fixed;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(10px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.endBlock {
+  position: relative;
+  width: 500px;
+  height: 250px;
+  background-color: #ffeb3b;
+  border: 15px solid #ffc107;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.endText {
+  font-size: 24px;
+}
+
+.endCongrats {
+  font-size: 36px;
+  font-weight: 700;
+  color: #e91e63;
+  margin-top: 24px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+/* Functional formatting */
 .show {
   display: block;
+}
+
+.showFlex {
+  display: flex;
 }
 
 .cover {

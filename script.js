@@ -148,7 +148,7 @@ function comparison() {
   }
 }
 
-// Function determining the end of the game
+// Functions determining the end of the game
 let theEnd = () => {
   if (points === endPoints || stopButton) {
     playDivText.textContent = 'Hrát';
@@ -156,7 +156,55 @@ let theEnd = () => {
   }
 };
 
+const endAlert = () => {
+  const endResult = document.querySelector('.endResult');
+  const endText = document.querySelector('.endText');
+  const closeButton = document.querySelector('.closeButton');
+
+  const popEndAlert = () => {
+    endResult.classList.add('showFlex');
+    closeButton.addEventListener('click', function close() {
+      endResult.classList.remove('showFlex');
+      closeButton.removeEventListener('click', close);
+    });
+  };
+
+  if (points === endPoints) {
+    if (!playDiv.classList.contains('multiplayer')) {
+      popEndAlert();
+      playDivText.textContent = 'Znovu';
+      endText.innerHTML = `Vyhrál/a jsi v čase <strong>${
+        document.querySelector('.stopwatch').textContent
+      }</strong>.`;
+    } else if (
+      playDiv.classList.contains('multiplayer') &&
+      pointsPlayer1 > pointsPlayer2
+    ) {
+      popEndAlert();
+      playDivText.textContent = 'Znovu';
+      endText.innerHTML = `Vyhrál <strong>hráč 1</strong>.`;
+    } else if (
+      playDiv.classList.contains('multiplayer') &&
+      pointsPlayer2 > pointsPlayer1
+    ) {
+      popEndAlert();
+      playDivText.textContent = 'Znovu';
+      endText.innerHTML = `Vyhrál <strong>hráč 2</strong>.`;
+    } else if (
+      playDiv.classList.contains('multiplayer') &&
+      pointsPlayer1 === pointsPlayer2
+    ) {
+      popEndAlert();
+      playDivText.textContent = 'Znovu';
+      endText.innerHTML = `Oba hráči měli <strong>stejně bodů</strong>.`;
+    } else {
+      console.log('Chyba ve vyhodnocení konečného výsledku hry.');
+    }
+  }
+};
+
 // Function for counting the time (stopwatch), ends if theEnd() returns true
+
 function count() {
   let sec = 0;
   let min = 0;
@@ -182,6 +230,8 @@ function count() {
     if (theEnd()) {
       clearInterval(countSec);
       clearInterval(countMin);
+      clearInterval(countEnd);
+      endAlert();
     }
   }, 10);
 }
@@ -230,7 +280,6 @@ playDiv.addEventListener('click', function singlePlayerGame() {
     playDiv.classList.add('paused');
   }
 });
-// Instead of start button a click into the whole array could distribute the handlers and/or restart them for example while changing the set of cards or players
 
 ///////////////////////////////////////////////////////////////////////////
 // 4. Difficulty levels & Media Queries (cards layout)
@@ -384,17 +433,6 @@ const body = document.querySelector('body');
 const player1_icon = document.querySelector('.player1_icon');
 const player2_icon = document.querySelector('.player2_icon');
 
-// const multiplayerGame = () => {
-//   if (!playDiv.classList.contains('multiplayer_active')) {
-//     player2_icon.classList.remove('show');
-//     body.style.background = 'none #C8E6C9';
-//     playDiv.classList.add('multiplayer_active');
-//     playDiv.classList.add('player1_turn');
-//   }
-//   console.log('Tady jsem!');
-//   playDiv.removeEventListener('click', multiplayerGame);
-// };
-
 const initMultiplayer = () => {
   document.querySelector('.stopwatch').style.display = 'none';
   document.querySelector('.points').style.display = 'none';
@@ -426,7 +464,6 @@ const initMultiplayer = () => {
       playDiv.classList.add('multiplayer_active');
       playDiv.classList.add('player1_turn');
     }
-    console.log('Tady jsem!');
     playDiv.removeEventListener('click', multiplayerGame);
   });
 };
@@ -441,7 +478,6 @@ singlePlayer.addEventListener('click', function () {
   document.querySelector('.player1').style.display = 'none';
   document.querySelector('.player2').style.display = 'none';
   document.querySelector('.players_menu_hidden').classList.remove('show');
-  // body.style.background = '#bdbdbd';
   playDiv.style.backgroundColor = '#e91e63';
   playDiv.classList.remove('multiplayer');
   playDiv.classList.remove('multiplayer_active');
@@ -465,11 +501,3 @@ multiplayer.addEventListener('click', function () {
   initMultiplayer();
   stopButton = true;
 });
-
-// How multiplayer works?
-
-// ** The interface will change its background color according to the color of the player; the buttons on function bar change (no more time counter but two buttons showing the points of the players) and the start button in the middle will show with an icon which player has its turn (but yet it is hidden)
-
-// After pressing start: it's the player 1 turn – his background stays but background of the other player dissapears, and the icon on button start is on his side
-
-// After two pictures are shown (the comparison runs) – if there are 2 different pictures, backgrounds exchange – it is turn of the player 2 – and the icon changes its orientation; – if 2 same pictures, the player gets a point and he can turn more pictures
