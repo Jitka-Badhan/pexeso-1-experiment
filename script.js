@@ -182,14 +182,14 @@ const endAlert = () => {
     ) {
       popEndAlert();
       playDivText.textContent = 'Znovu';
-      endText.innerHTML = `Vyhrál <strong>hráč 1</strong>.`;
+      endText.innerHTML = `Vyhrál <strong style="color: #4caf50;">hráč 1</strong>.`;
     } else if (
       playDiv.classList.contains('multiplayer') &&
       pointsPlayer2 > pointsPlayer1
     ) {
       popEndAlert();
       playDivText.textContent = 'Znovu';
-      endText.innerHTML = `Vyhrál <strong>hráč 2</strong>.`;
+      endText.innerHTML = `Vyhrál <strong style="color: #2196f3;">hráč 2</strong>.`;
     } else if (
       playDiv.classList.contains('multiplayer') &&
       pointsPlayer1 === pointsPlayer2
